@@ -11,6 +11,13 @@ The OSTN02 transform is Crown Copyright (C) 2002
 
 See COPYING for redistribution terms (BSD license)
 
+## TODO
+
+* grid_to_small_code and grid_to_big_code are only used in grid_to_os_streetview_tile, they don't act as I think they should
+ (which is to return the grid code for an arbitrary easting/northing).  Should probably write a new function rather than diddle
+ this to do what I think it should.
+
+
 The documentation for the original Perl module is shown below, this should be modified to reflect the Python code.
 
 Geo::Coordinates::OSGB - Convert coordinates between Lat/Lon and the British National Grid

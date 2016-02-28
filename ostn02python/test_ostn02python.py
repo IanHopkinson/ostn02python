@@ -57,13 +57,18 @@ def test_out_of_bounds_exception():
     (x,y,h) = OSGB36_to_ETRS89(622129,185038)
 
 def test_grid_to_small_code():
-    #grid_to_small_code(e, n)
-    pass
+    # Chester SJ grid square
+    easting = 340430.0
+    northing = 366629.0
+    found, ebig, nbig = grid_to_small_code(easting, northing)
+    print(found, ebig, nbig)
 
 def test_grid_to_big_code():
-    #grid_to_big_code(e, n)
-    pass
-
+    # Chester SJ grid square
+    easting = 340430.0
+    northing = 366629.0
+    found = grid_to_big_code(easting, northing)
+    print(found)
 
 def test_os_streetview_tile_to_grid():
     # tile_name
