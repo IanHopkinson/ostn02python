@@ -1,4 +1,7 @@
-import OSTN02, OSGB, six
+from ostn02python.OSGB import parse_grid, grid_to_ll
+from ostn02python.OSTN02 import OSGB36_to_ETRS89
+
+import six
 
 def OSGB36GridRefToETRS89(mapRef):
 
@@ -12,9 +15,9 @@ def OSGB36GridRefToETRS89(mapRef):
 	east = int(mapRef[2:2+coordLen])*pow(10,5-coordLen)
 	nrth = int(mapRef[2+coordLen:])*pow(10,5-coordLen)
 
-	x1, y1 = OSGB.parse_grid(code, east, nrth)
+	x1, y1 = parse_grid(code, east, nrth)
 
-	(x,y,h) = OSTN02.OSGB36_to_ETRS89 (x1, y1)
-	(gla, glo) = OSGB.grid_to_ll(x, y)
+	(x,y,h) = OSGB36_to_ETRS89 (x1, y1)
+	(gla, glo) = grid_to_ll(x, y)
 	return (gla, glo)
 

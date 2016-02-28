@@ -1,0 +1,15 @@
+Metadata-Version: 1.1
+Name: osn02python
+Version: 1.0.0
+Summary: OSTN02 coordinate conversion utility
+Home-page: http://www.sheerman-chase.org.uk
+Author: Tim Sheerman-Chase
+Author-email: tim2009@sheerman-chase.org.uk
+License: Free To Use But Restricted
+Description: 
+        OSTN02 coordinate conversion utility 
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: License :: Free To Use But Restricted
