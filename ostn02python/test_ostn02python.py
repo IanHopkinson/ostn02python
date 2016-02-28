@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-from ostn02python.OSGB import parse_grid, grid_to_ll, ll_to_grid
+from ostn02python.OSGB import (parse_grid, grid_to_ll, ll_to_grid, 
+                               grid_to_small_code, grid_to_big_code,
+                               )
 from ostn02python.OSTN02 import OSGB36_to_ETRS89, ETRS89_to_OSGB36
 from ostn02python.transform import OSGB36GridRefToETRS89
 
@@ -53,3 +55,21 @@ def test_ETRS89_to_OSGB36():
 @raises(Exception)
 def test_out_of_bounds_exception():
     (x,y,h) = OSGB36_to_ETRS89(622129,185038)
+
+def test_grid_to_small_code():
+    #grid_to_small_code(e, n)
+    pass
+
+def test_grid_to_big_code():
+    #grid_to_big_code(e, n)
+    pass
+
+
+def test_os_streetview_tile_to_grid():
+    # tile_name
+    #os_streetview_tile_to_grid()
+    pass
+
+def test_grid_to_os_streetview_tile():
+    #grid_to_os_streetview_tile(grid)
+    pass
