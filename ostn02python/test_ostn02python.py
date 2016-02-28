@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-from ostn02python.OSGB import parse_grid, grid_to_ll
-from ostn02python.OSTN02 import OSGB36_to_ETRS89
+from ostn02python.OSGB import parse_grid, grid_to_ll, ll_to_grid
+from ostn02python.OSTN02 import OSGB36_to_ETRS89, ETRS89_to_OSGB36
 from ostn02python.transform import OSGB36GridRefToETRS89
 
-from nose.tools import assert_equal, assert_almost_equal
+from nose.tools import assert_equal, assert_almost_equal, raises
 # from OSTN02 import *
 
 def test_parse_grid1():
@@ -37,3 +37,19 @@ def test_OSGB36GridRefToETRS89():
 
     assert_almost_equal(gla, 51.297880, places=6)
     assert_almost_equal(glo, 1.072628, places=6)
+
+def test_ETRS89_to_OSGB36():
+    gla = 51.297880
+    glo = 1.072628
+    h = 44.621
+
+    (x2,y2) = ll_to_grid(gla, glo)
+
+    (x, y, h) = ETRS89_to_OSGB36(x2,y2,h)
+
+    assert_almost_equal(x, 614300, places=1)
+    assert_almost_equal(y, 159900, places=1)
+
+@raises(Exception)
+def test_out_of_bounds_exception():
+    (x,y,h) = OSGB36_to_ETRS89(622129,185038)
