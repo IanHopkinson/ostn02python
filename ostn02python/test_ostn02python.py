@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # encoding: utf-8
+
 from ostn02python.OSGB import parse_grid
 from nose.tools import assert_equal
 # from OSTN02 import *
