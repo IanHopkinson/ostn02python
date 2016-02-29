@@ -11,16 +11,9 @@ The OSTN02 transform is Crown Copyright (C) 2002
 
 See COPYING for redistribution terms (BSD license)
 
-## TODO
+The documentation for the original Perl module, by Toby Thurston is shown below, this should be modified to reflect the Python code.
 
-* grid_to_small_code and grid_to_big_code are only used in grid_to_os_streetview_tile, they don't act as I think they should
- (which is to return the grid code for an arbitrary easting/northing).  Should probably write a new function rather than diddle
- this to do what I think it should.
-
-
-The documentation for the original Perl module is shown below, this should be modified to reflect the Python code.
-
-Geo::Coordinates::OSGB - Convert coordinates between Lat/Lon and the British National Grid
+# Geo::Coordinates::OSGB - Convert coordinates between Lat/Lon and the British National Grid
 
 An implementation of co-ordinate conversion for England, Wales, and Scotland
 based on formulae published by the Ordnance Survey of Great Britain.
@@ -53,7 +46,7 @@ neither the Channel Islands nor Northern Ireland.  The coverage that is
 included is essentially the same as the coverage provided by the OSGB
 "Landranger" 1:50000 series maps.
 
-=head1 SYNOPSIS
+## SYNOPSIS
 
   use Geo::Coordinates::OSGB qw(ll_to_grid grid_to_ll);
 
@@ -61,7 +54,7 @@ included is essentially the same as the coverage provided by the OSGB
   ($easting,$northing) = ll_to_grid($lat,$lon);
   ($lat,$lon) = grid_to_ll($easting,$northing);
 
-=head1 DESCRIPTION
+## DESCRIPTION
 
 These modules provide a collection of routines to convert between coordinates expressed as latitude & longtitude and
 map grid references, using the formulae given in the British Ordnance Survey's excellent information leaflet, referenced
@@ -80,7 +73,7 @@ elsewhere but you would need to adapt it.  Some starting points for doing this
 are explained in the L<Theory> section below.
 
 
-=head1 FUNCTIONS
+## FUNCTIONS
 
 The following functions can be exported from the C<Geo::Coordinates::OSGB>
 module:
@@ -162,7 +155,7 @@ from the companion module.  This is explained in more detail below.
 
 Formats an (easting, northing) pair into traditional `full national grid
 reference' with two letters and two sets of three numbers, like this
-`TQ 102 606'.  If you want to remove the spaces, just apply C<s/\s//g> to it.
+`TQ 102 606'.  If you want to remove the spaces, just apply `C<s/\s//g>` to it.
 
     $gridref = format_grid_trad(533000, 180000); # TQ 330 800
     $gridref =~ s/\s//g;                         # TQ330800
@@ -353,7 +346,7 @@ L<Geo::Coordinates::OSTN02> modules.
 
 =back
 
-=head1 THEORY
+## THEORY
 
 The algorithms and theory for these conversion routines are all from
 I<A Guide to Coordinate Systems in Great Britain>
@@ -403,7 +396,7 @@ another feature designed to minimize distortion, and if in doubt set it to
 1 (which means it has no effect).  For Britain, being so northerly it is set
 to slightly less than 1.
 
-=head2 The British National Grid
+## The British National Grid
 
 One consequence of the True Point of Origin of the British Grid being set to
 C<+4900-00200/> is that all the vertical grid lines are parallel to the 2degW
@@ -459,7 +452,7 @@ the grid square (although beware that the GPS fix is unlikely to be accurate dow
 to the last metre).
 
 
-=head2 Geoid models
+## Geoid models
 
 This section explains the fundamental problems of mapping a spherical earth
 onto a flat piece of paper (or computer screen).  A basic understanding of
@@ -531,7 +524,7 @@ referred to as ETRS89.  For all practical purposes in Western Europe the OS
 advise that one can regard ETRS89 as identical to WGS84 (unless you need to
 worry about tectonic plate movements).
 
-=head2 Practical implications
+## Practical implications
 
 If you are working exclusively with British OS maps and you merely want
 to convert from the grid to the latitude and longitude coordinates printed (as
@@ -579,7 +572,7 @@ C<grid_to_ll()> with the WGS84 parameter to get WGS84 lat/long coordinates.
    ($lat, $lon) = grid_to_ll($x, $y, 'WGS84');
 
 
-=head1 EXAMPLES
+## EXAMPLES
 
   # to import everything try...
   use Geo::Coordinates::OSGB ':all';
@@ -625,7 +618,7 @@ C<grid_to_ll()> with the WGS84 parameter to get WGS84 lat/long coordinates.
   $str = format_ll_trad($lat,$lon);   # "N52:00:00 W002:00:00"
 
 
-=head1 BUGS
+## BUGS
 
 The conversions are only approximate.   So after
 
@@ -651,13 +644,13 @@ get from users, but especially for problem reports that help me to make this
 a better module.
 
 
-=head1 AUTHOR
+## AUTHOR
 
 Toby Thurston ---  6 Nov 2008
 
 toby@cpan.org
 
-=head1 SEE ALSO
+## SEE ALSO
 
 The UK Ordnance Survey's theory paper referenced above in L<Theory>.
 

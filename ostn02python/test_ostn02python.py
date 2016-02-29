@@ -3,7 +3,8 @@
 
 from ostn02python.OSGB import (parse_grid, grid_to_ll, ll_to_grid, 
                                grid_to_small_code, grid_to_big_code,
-                               )
+                               grid_to_os_streetview_tile)
+
 from ostn02python.OSTN02 import OSGB36_to_ETRS89, ETRS89_to_OSGB36
 from ostn02python.transform import OSGB36GridRefToETRS89
 
@@ -56,25 +57,35 @@ def test_ETRS89_to_OSGB36():
 def test_out_of_bounds_exception():
     (x,y,h) = OSGB36_to_ETRS89(622129,185038)
 
-def test_grid_to_small_code():
-    # Chester SJ grid square
-    easting = 340430.0
-    northing = 366629.0
-    found, ebig, nbig = grid_to_small_code(easting, northing)
-    print(found, ebig, nbig)
+# def test_grid_to_small_code():
+#     # Chester SJ grid square
+#     easting = 340430.0
+#     northing = 366629.0
+#     found, ebig, nbig = grid_to_small_code(easting, northing)
+#     print(found, ebig, nbig)
 
-def test_grid_to_big_code():
-    # Chester SJ grid square
-    easting = 340430.0
-    northing = 366629.0
-    found = grid_to_big_code(easting, northing)
-    print(found)
+# def test_grid_to_big_code():
+#     #found = grid_to_big_code(easting, northing)
+#     #print(found)
+#     pass
 
 def test_os_streetview_tile_to_grid():
     # tile_name
     #os_streetview_tile_to_grid()
     pass
 
-def test_grid_to_os_streetview_tile():
-    #grid_to_os_streetview_tile(grid)
-    pass
+def test_grid_to_os_streetview_tile1():
+    # Chester SJ46 grid square
+    easting = 340430.0
+    northing = 366629.0
+    
+    gridref = grid_to_os_streetview_tile((easting, northing))
+    print(gridref)
+
+def test_grid_to_os_streetview_tile2():
+    # Ashton under Lyme SJ99 grid square
+    easting = 393720
+    northing = 399001
+    
+    gridref = grid_to_os_streetview_tile((easting, northing))
+    print(gridref)
