@@ -89,3 +89,11 @@ def test_grid_to_os_streetview_tile2():
     
     gridref = grid_to_os_streetview_tile((easting, northing))
     print(gridref)
+
+def test_grid_to_os_streetview_tile3():
+    # North Roe, HU38
+    easting = 436612
+    northing = 1189906
+
+    gridref = grid_to_os_streetview_tile((easting, northing))
+    print(gridref)
